@@ -1,0 +1,21 @@
+name: 'Example Workflow'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Composite Action
+        uses: ./.github/actions/my-composite-action
+        with:
+          repository: 'my-repo'
+          variable1: 'some-value'
+        env:
+          SECRET1: ${{ secrets.MY_SECRET }}
