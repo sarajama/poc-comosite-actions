@@ -1,0 +1,29 @@
+name: 'My Composite Action'
+description: 'A reusable composite action that performs a set of tasks'
+inputs:
+  repository:
+    description: 'The name of the repository'
+    required: true
+    type: string
+  variable1:
+    description: 'A variable for configuration'
+    required: true
+    type: string
+  secret1:
+    description: 'A secret value'
+    required: true
+    type: secret
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.repository }}
+        
+    - name: Run a script
+      run: |
+        echo "Repository: ${{ inputs.repository }}"
+        echo "Variable1: ${{ inputs.variable1 }}"
+        echo "Secret1: ${{ secrets.secret1 }}"
