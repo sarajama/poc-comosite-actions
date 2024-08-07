@@ -5,7 +5,7 @@ name: 'Example Workflow'
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   example-job:
